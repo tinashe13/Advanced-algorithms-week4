@@ -12,7 +12,6 @@ typedef pair<int, int> Node;
 
 class Graph {
 private:
-    // vertex -> [(neighbor, weight)]
     unordered_map<int, vector<pair<int, int>>> adjList;
 
 public:
