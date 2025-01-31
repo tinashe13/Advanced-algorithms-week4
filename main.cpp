@@ -23,19 +23,19 @@ public:
     void dijkstra(int start, int end) {
         unordered_map<int, int> distances;
         unordered_map<int, int> previous;
-        priority_queue<Node, vector<Node>, greater<Node>> pq;
+        priority_queue<Node, vector<Node>, greater<Node>> pQueue;
 
         // Initialize distances to infinity
         for (const auto& entry : adjList) {
             distances[entry.first] = INT_MAX;
         }
         distances[start] = 0;
-        pq.emplace(0, start);
+        pQueue.emplace(0, start);
 
-        while (!pq.empty()) {
-            int currentDist = pq.top().first;
-            int currentNode = pq.top().second;
-            pq.pop();
+        while (!pQueue.empty()) {
+            int currentDist = pQueue.top().first;
+            int currentNode = pQueue.top().second;
+            pQueue.pop();
 
             if (currentDist > distances[currentNode]) continue;
 
@@ -47,7 +47,7 @@ public:
                 if (newDist < distances[nextNode]) {
                     distances[nextNode] = newDist;
                     previous[nextNode] = currentNode;
-                    pq.emplace(newDist, nextNode);
+                    pQueue.emplace(newDist, nextNode);
                 }
             }
         }
